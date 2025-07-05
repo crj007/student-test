@@ -64,7 +64,7 @@ function showQuestion() {
   if (current >= questions.length) return showResult();
 
   const q = questions[current];
-  document.getElementById("qnumber").innerText = `Q${current + 1}`;
+  document.getElementById("qnum").innerText = `Q${current + 1}`;
   document.getElementById("question-text").innerText = q.question;
 
   const optDiv = document.getElementById("options");
@@ -80,9 +80,12 @@ function showQuestion() {
     optDiv.appendChild(label);
   });
 
-  document.getElementById("next-btn").disabled = true;
+  // 🟢 Enable Next button immediately (allow skipping)
+  document.getElementById("next-btn").disabled = false;
+
   startTimer();
 }
+
 
 // Select Option
 function selectOption(radio, correct) {
