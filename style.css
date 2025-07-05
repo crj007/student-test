@@ -128,3 +128,56 @@ body, html {
 .start-btn:hover {
   background: #0056b3;
 }
+/* ==== TEST PAGE ==== */
+.test-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #e3f2fd, #f1f8e9);
+  padding: 30px;
+}
+
+#test-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 700px;
+}
+
+#question-text {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.option-label:hover {
+  background: #e0f7fa;
+}
+
+.option-label.correct {
+  background-color: #d4edda !important;
+}
+.option-label.wrong {
+  background-color: #f8d7da !important;
+}
+
+.hidden {
+  display: none;
+}
