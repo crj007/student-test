@@ -48,15 +48,22 @@ let timer = null;
 
 // Load Questions
 async function loadQuestions() {
-  const file = localStorage.getItem("testFile") || "questions.json";
-  const res = await fetch(file);
-  questions = await res.json();
+  try {
+    const file = localStorage.getItem("testFile") || "questions.json";
+    const res = await fetch(file);
+    if (!res.ok) throw new Error("File not found or error in loading JSON");
+    questions = await res.json();
 
-  // Shuffle the questions
-  questions = shuffleArray(questions);
+    // Shuffle questions
+    questions = questions.sort(() => Math.random() - 0.5);
 
-  showQuestion();
+    showQuestion();
+  } catch (err) {
+    alert("⚠️ Failed to load questions. Check console for details.");
+    console.error("Error loading questions:", err);
+  }
 }
+
 
 
 // Show a Question
