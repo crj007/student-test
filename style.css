@@ -1,4 +1,4 @@
-/* ===== Reset & Body Styling ===== */
+/* ==== Reset + Global ==== */
 * {
   margin: 0;
   padding: 0;
@@ -7,29 +7,28 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background: #f0f4f8;
-  color: #333;
+  background: #f0f2f5;
 }
 
-/* ===== Login Page Styling ===== */
+/* ==== Login Page ==== */
 .login-container {
   display: flex;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+  background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
 }
 .login-box {
   background: white;
   padding: 40px 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 320px;
 }
 .login-box h2 {
   margin-bottom: 20px;
-  font-size: 22px;
+  color: #333;
 }
 .login-box input {
   width: 100%;
@@ -42,145 +41,115 @@ body, html {
 .login-box button {
   width: 100%;
   padding: 12px;
-  font-size: 16px;
-  margin-top: 10px;
-  background-color: #007bff;
+  background: #007bff;
   color: white;
+  font-size: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 .login-box button:hover {
-  background-color: #0056b3;
+  background: #0056b3;
 }
 #error-msg {
   color: red;
   margin-top: 10px;
 }
 
-/* ===== Dashboard & Test ===== */
-.instruction-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 30px;
-  background: #f7f9fb;
-}
-.card {
-  background: #fff;
-  padding: 30px 40px;
+/* ==== Dashboard + Test Shared ==== */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background: white;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  max-width: 600px;
-  width: 100%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-.card h1 {
-  margin-bottom: 10px;
 }
 .student-info {
+  margin-bottom: 20px;
   font-size: 18px;
-  margin-bottom: 10px;
 }
-.friendly-msg {
-  font-style: italic;
-  margin-bottom: 20px;
-  color: #555;
-}
-.instruction-box {
-  text-align: left;
-  background: #f0f4f8;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-.instruction-box ul {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-.start-btn, #next-btn {
+.start-btn, .next-btn {
   background: #28a745;
   color: white;
-  font-size: 16px;
   padding: 12px 20px;
   border: none;
+  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  transition: background 0.3s ease;
 }
-.start-btn:hover, #next-btn:hover {
-  background: #218838;
-}
-
-/* ===== Test Area ===== */
-.test-header {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0 10px;
-  font-size: 16px;
-}
-.timer-bar {
-  height: 8px;
-  background: #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-#progress {
-  height: 100%;
-  width: 100%;
-  background-color: #007bff;
-  transition: width 1s linear;
-}
-#question-text {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-#options {
-  text-align: left;
-}
-.option-label {
-  display: block;
-  background: #f2f2f2;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.option-label:hover {
-  background: #e0f0ff;
-}
-.option-label input {
-  margin-right: 10px;
-}
-.correct {
-  background-color: #d4edda !important;
-}
-.wrong {
-  background-color: #f8d7da !important;
-}
-
-/* ===== Result Area ===== */
-.result-container {
-  text-align: center;
-  margin-top: 30px;
+.start-btn:hover, .next-btn:hover {
+  background: #1e7e34;
 }
 .hidden {
   display: none;
 }
 
-/* ===== Confetti & Sad Face ===== */
+/* ==== Timer Bar ==== */
+.timer-bar {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+#progress {
+  height: 100%;
+  width: 100%;
+  background: #3399ff;
+  transition: width 1s linear;
+}
+
+/* ==== Options ==== */
+#options {
+  text-align: left;
+  margin: 20px 0;
+}
+.option-label {
+  display: block;
+  background: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.option-label:hover {
+  background: #dbeeff;
+}
+.option-label input {
+  margin-right: 10px;
+}
+.option-label.correct {
+  background: #d4edda !important;
+}
+.option-label.wrong {
+  background: #f8d7da !important;
+}
+
+/* ==== Result ==== */
+.result-container {
+  margin-top: 60px;
+  text-align: center;
+}
+.result-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* ==== Confetti & Sad Face ==== */
 #confetti-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999;
 }
 @keyframes fadeOut {
   0% { opacity: 1; transform: scale(1); }
