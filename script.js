@@ -44,8 +44,9 @@ function beginTest() {
 let questions = [];
 let current = 0;
 let score = 0;
+let timer = null;
 
-// ========== LOAD QUESTIONS ==========
+// Load Questions
 async function loadQuestions() {
   const file = localStorage.getItem("testFile") || "questions.json";
   const res = await fetch(file);
@@ -53,13 +54,12 @@ async function loadQuestions() {
   showQuestion();
 }
 
-// ========== SHOW QUESTION ==========
+// Show a Question
 function showQuestion() {
-  if (current >= questions.length) {
-    return showResult();
-  }
+  if (current >= questions.length) return showResult();
 
   const q = questions[current];
+  document.getElementById("qnumber").innerText = `Q${current + 1}`;
   document.getElementById("question-text").innerText = q.question;
 
   const optDiv = document.getElementById("options");
@@ -75,11 +75,13 @@ function showQuestion() {
     optDiv.appendChild(label);
   });
 
-  document.getElementById("next-btn").disabled = false; // allow next anytime
+  document.getElementById("next-btn").disabled = true;
+  startTimer();
 }
 
-// ========== SELECT OPTION ==========
+// Select Option
 function selectOption(radio, correct) {
+  stopTimer();
   const selected = radio.value;
   const all = document.getElementsByName("option");
   all.forEach(r => r.disabled = true);
@@ -92,22 +94,61 @@ function selectOption(radio, correct) {
     radio.parentElement.classList.add("wrong");
     showSadFace();
   }
+
+  document.getElementById("next-btn").disabled = false;
 }
 
-// ========== NEXT QUESTION ==========
+// Timer
+function startTimer() {
+  let time = 40;
+  document.getElementById("time").innerText = time;
+  document.getElementById("progress").style.width = "100%";
+
+  timer = setInterval(() => {
+    time--;
+    document.getElementById("time").innerText = time;
+    document.getElementById("progress").style.width = `${(time / 40) * 100}%`;
+
+    if (time === 0) {
+      clearInterval(timer);
+      autoSelect();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timer);
+}
+
+// Auto select if no answer
+function autoSelect() {
+  const correct = questions[current].answer;
+  const radios = document.getElementsByName("option");
+  radios.forEach(r => r.disabled = true);
+
+  radios.forEach(r => {
+    if (r.value === correct) r.parentElement.classList.add("correct");
+  });
+
+  showSadFace();
+  document.getElementById("next-btn").disabled = false;
+}
+
+// Next question
 function nextQuestion() {
+  stopTimer();
   current++;
   showQuestion();
 }
 
-// ========== SHOW RESULT ==========
+// Show final result
 function showResult() {
   document.getElementById("question-box").classList.add("hidden");
   document.getElementById("result-box").classList.remove("hidden");
   document.getElementById("score-result").innerText = `You scored ${score} out of ${questions.length}`;
 }
 
-// ========== EFFECTS ==========
+// Celebration / Sad
 function showConfetti() {
   confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
 }
@@ -127,3 +168,4 @@ function showSadFace() {
   document.body.appendChild(sad);
   setTimeout(() => sad.remove(), 2000);
 }
+
