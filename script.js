@@ -21,3 +21,22 @@ async function login() {
     error.innerText = "⚠️ Error loading student data.";
   }
 }
+// ========== LOAD DASHBOARD ==========
+function loadDashboard() {
+  const fullname = localStorage.getItem("fullname");
+  const cls = localStorage.getItem("class");
+
+  if (!fullname || !cls) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  document.getElementById("student-name").innerText = fullname;
+  document.getElementById("student-class").innerText = cls;
+}
+
+// ========== START TEST ==========
+function beginTest() {
+  localStorage.setItem("testFile", "questions.json");
+  window.location.href = "test.html";
+}
