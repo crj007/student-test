@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Instructions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="card">
+      <h1>Welcome to Your Test</h1>
+
+      <p class="student-info">
+        👋 Hello <strong><span id="student-name"></span></strong> (Class <span id="student-class"></span>)
+      </p>
+
+      <p class="instructions-msg">📌 Please read the instructions below before starting your test.</p>
+
+      <div class="instructions-box">
+        <ul>
+          <li>✅ The test has multiple choice questions.</li>
+          <li>⏱️ You will have <strong>40 seconds</strong> per question.</li>
+          <li>➡️ Click "Next" to move to the next question, even if unanswered.</li>
+          <li>🏁 The result will be shown at the end of the test.</li>
+        </ul>
+      </div>
+
+      <button class="start-btn" onclick="beginTest()">✅ Begin Test</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    loadDashboard();
+  </script>
+</body>
+</html>
