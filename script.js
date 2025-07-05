@@ -51,8 +51,13 @@ async function loadQuestions() {
   const file = localStorage.getItem("testFile") || "questions.json";
   const res = await fetch(file);
   questions = await res.json();
+
+  // Shuffle the questions
+  questions = shuffleArray(questions);
+
   showQuestion();
 }
+
 
 // Show a Question
 function showQuestion() {
