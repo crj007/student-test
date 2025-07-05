@@ -46,67 +46,56 @@ let current = 0;
 let score = 0;
 let timer = null;
 
-// Load Questions
+// Load Questions (shuffle)
 async function loadQuestions() {
   try {
     const file = localStorage.getItem("testFile") || "questions.json";
     const res = await fetch(file);
-    if (!res.ok) throw new Error("File not found or error in loading JSON");
+    if (!res.ok) throw new Error("Failed to load questions");
     questions = await res.json();
-
-    // Shuffle questions
     questions = questions.sort(() => Math.random() - 0.5);
-
     showQuestion();
   } catch (err) {
-    alert("⚠️ Failed to load questions. Check console for details.");
-    console.error("Error loading questions:", err);
+    alert("❌ Could not load questions.");
+    console.error(err);
   }
 }
 
-
-
-// Show a Question
+// Show question
 function showQuestion() {
   if (current >= questions.length) return showResult();
 
   const q = questions[current];
-  document.getElementById("qnum").innerText = `Q${current + 1}`;
   document.getElementById("question-text").innerText = q.question;
 
-  const optDiv = document.getElementById("options");
-  optDiv.innerHTML = "";
-
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
   q.options.forEach(opt => {
     const label = document.createElement("label");
     label.className = "option-label";
     label.innerHTML = `
-      <input type="radio" name="option" value="${opt}" onclick="selectOption(this, '${q.answer}')">
-      ${opt}
+      <input type="radio" name="option" value="${opt}" onclick="selectOption(this, '${q.answer}')"> ${opt}
     `;
-    optDiv.appendChild(label);
+    optionsDiv.appendChild(label);
   });
 
-  // 🟢 Enable Next button immediately (allow skipping)
-  document.getElementById("next-btn").disabled = false;
-
+  document.getElementById("next-btn").disabled = true;
+  document.getElementById("result-box").classList.add("hidden");
   startTimer();
 }
 
-
-// Select Option
-function selectOption(radio, correct) {
+// Select option
+function selectOption(input, correct) {
   stopTimer();
-  const selected = radio.value;
   const all = document.getElementsByName("option");
   all.forEach(r => r.disabled = true);
 
-  if (selected === correct) {
-    radio.parentElement.classList.add("correct");
+  if (input.value === correct) {
+    input.parentElement.classList.add("correct");
     showConfetti();
     score++;
   } else {
-    radio.parentElement.classList.add("wrong");
+    input.parentElement.classList.add("wrong");
     showSadFace();
   }
 
@@ -135,21 +124,19 @@ function stopTimer() {
   clearInterval(timer);
 }
 
-// Auto select if no answer
+// Auto-select correct
 function autoSelect() {
   const correct = questions[current].answer;
   const radios = document.getElementsByName("option");
-  radios.forEach(r => r.disabled = true);
-
   radios.forEach(r => {
+    r.disabled = true;
     if (r.value === correct) r.parentElement.classList.add("correct");
   });
-
   showSadFace();
   document.getElementById("next-btn").disabled = false;
 }
 
-// Next question
+// Go to next question
 function nextQuestion() {
   stopTimer();
   current++;
@@ -163,11 +150,10 @@ function showResult() {
   document.getElementById("score-result").innerText = `You scored ${score} out of ${questions.length}`;
 }
 
-// Celebration / Sad
+// Confetti and sad face
 function showConfetti() {
   confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
 }
-
 function showSadFace() {
   const sad = document.createElement("div");
   sad.innerText = "😢";
@@ -183,11 +169,5 @@ function showSadFace() {
   document.body.appendChild(sad);
   setTimeout(() => sad.remove(), 2000);
 }
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
+
 
