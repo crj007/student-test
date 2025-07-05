@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Which of these is NOT a member of a joint family?",
+    "options": ["Grandparents", "Uncles and Aunts", "Cousins", "Neighbors"],
+    "answer": "Neighbors"
+  },
+  {
+    "question": "What do we call the family where parents and children live together?",
+    "options": ["Joint family", "Nuclear family", "Extended family", "Friend family"],
+    "answer": "Nuclear family"
+  },
+  {
+    "question": "Which animal gives us wool?",
+    "options": ["Cow", "Sheep", "Horse", "Dog"],
+    "answer": "Sheep"
+  },
+  {
+    "question": "Which of these is a domestic animal?",
+    "options": ["Lion", "Elephant", "Cow", "Tiger"],
+    "answer": "Cow"
+  },
+  {
+    "question": "Which bird has a long neck and lives near water?",
+    "options": ["Crow", "Sparrow", "Crane", "Pigeon"],
+    "answer": "Crane"
+  },
+  {
+    "question": "Which bird stitches leaves together to make its nest?",
+    "options": ["Tailorbird", "Peacock", "Owl", "Parrot"],
+    "answer": "Tailorbird"
+  },
+  {
+    "question": "What do we call the layer of air surrounding the Earth?",
+    "options": ["Hydrosphere", "Atmosphere", "Lithosphere", "Biosphere"],
+    "answer": "Atmosphere"
+  },
+  {
+    "question": "Which of these is a natural source of water?",
+    "options": ["Tap", "Well", "River", "Water tank"],
+    "answer": "River"
+  },
+  {
+    "question": "Which layer of soil contains humus?",
+    "options": ["Topsoil", "Subsoil", "Bedrock", "Sand"],
+    "answer": "Topsoil"
+  },
+  {
+    "question": "What is the process of soil formation called?",
+    "options": ["Erosion", "Weathering", "Evaporation", "Condensation"],
+    "answer": "Weathering"
+  },
+  {
+    "question": "Who takes care of us when we are sick in a family?",
+    "options": ["Father", "Mother", "Both parents", "All family members"],
+    "answer": "All family members"
+  },
+  {
+    "question": "Which animal is called the 'ship of the desert'?",
+    "options": ["Horse", "Camel", "Elephant", "Donkey"],
+    "answer": "Camel"
+  },
+  {
+    "question": "Which bird migrates long distances every year?",
+    "options": ["Siberian Crane", "Peacock", "Crow", "Sparrow"],
+    "answer": "Siberian Crane"
+  },
+  {
+    "question": "What do we call the home made by a bird?",
+    "options": ["Cave", "Nest", "Den", "Burrow"],
+    "answer": "Nest"
+  },
+  {
+    "question": "Which of these helps in reducing air pollution?",
+    "options": ["Cutting trees", "Burning garbage", "Planting trees", "Using more vehicles"],
+    "answer": "Planting trees"
+  },
+  {
+    "question": "Which soil is best for growing plants?",
+    "options": ["Sandy soil", "Clayey soil", "Loamy soil", "Gravel"],
+    "answer": "Loamy soil"
+  },
+  {
+    "question": "What do family members share with each other?",
+    "options": ["Food", "Love and care", "House", "All of these"],
+    "answer": "All of these"
+  },
+  {
+    "question": "Which animal is known as man's best friend?",
+    "options": ["Cat", "Dog", "Parrot", "Rabbit"],
+    "answer": "Dog"
+  },
+  {
+    "question": "Which bird can imitate human speech?",
+    "options": ["Crow", "Peacock", "Parrot", "Pigeon"],
+    "answer": "Parrot"
+  },
+  {
+    "question": "What should we do to protect our environment?",
+    "options": ["Litter everywhere", "Waste water", "Recycle and reuse", "Cut more trees"],
+    "answer": "Recycle and reuse"
+  }
+]
