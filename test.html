@@ -6,13 +6,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="test-container">
+  <div class="instruction-container fade-in">
     <div class="card" id="test-card">
-      <h1>📝 Class 5 - Test</h1>
+      <h1>Class 5 - Test</h1>
 
       <p class="student-info">
-        Welcome: <strong><span id="student-name"></span></strong> (Class <span id="student-class"></span>)
+        👋 Welcome: <strong><span id="student-name"></span></strong> (Class <span id="student-class"></span>)
       </p>
+
+      <div class="test-header">
+        <div id="qnumber">Q1</div>
+        <div id="timer">⏰ Time left: <span id="time">40</span> sec</div>
+      </div>
+
+      <div class="timer-bar">
+        <div id="progress"></div>
+      </div>
 
       <div id="question-box">
         <h3 id="question-text">Loading...</h3>
@@ -27,18 +36,14 @@
     </div>
   </div>
 
-  <!-- Confetti -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
   <script>
-    // Set student info
-    document.getElementById("student-name").innerText = localStorage.getItem("fullname");
-    document.getElementById("student-class").innerText = localStorage.getItem("class");
+    document.getElementById("student-name").innerText = localStorage.getItem("fullname") || "Student";
+    document.getElementById("student-class").innerText = localStorage.getItem("class") || "5";
 
-    // Load questions
     loadQuestions();
   </script>
 </body>
