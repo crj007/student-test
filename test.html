@@ -27,7 +27,11 @@
       <div id="question-box">
         <h3 id="question-text">Loading...</h3>
         <div id="options"></div>
-        <button id="next-btn" class="start-btn" onclick="nextQuestion()">Next</button>
+        <div class="button-group">
+          <button id="skip-btn" class="start-btn" onclick="skipQuestion()">⏭ Skip</button>
+          <button id="next-btn" class="start-btn hidden" onclick="nextQuestion()">➡ Next</button>
+          <button id="submit-btn" class="start-btn hidden" onclick="submitTest()">✅ Submit Test</button>
+        </div>
       </div>
 
       <div id="result-box" class="hidden">
@@ -37,6 +41,10 @@
     </div>
   </div>
 
+  <!-- Confetti animation -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 
