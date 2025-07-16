@@ -41,34 +41,54 @@ function loadDashboard() {
   document.getElementById("student-class").innerText = cls;
 }
 
+// ==========================
+// Global Variables
+// ==========================
 let questions = [];
 let current = 0;
 let score = 0;
 let timer = null;
 
-// ========== Load & Shuffle Questions ==========
+// ==========================
+// Begin Test (from dashboard)
+// ==========================
+function beginTest() {
+  localStorage.setItem("testFile", "questions.json");
+  window.location.href = "test.html";
+}
+
+// ==========================
+// Load Student Info on Dashboard
+// ==========================
+function loadDashboard() {
+  const name = localStorage.getItem("fullname");
+  const cls = localStorage.getItem("class");
+  if (!name || !cls) {
+    window.location.href = "index.html";
+    return;
+  }
+  document.getElementById("student-name").innerText = name;
+  document.getElementById("student-class").innerText = cls;
+}
+
+// ==========================
+// Load Questions
+// ==========================
 async function loadQuestions() {
   try {
-    const res = await fetch("questions.json");
-    const data = await res.json();
-
-    questions = shuffleArray(data); // Shuffle questions
-    current = 0;
-    score = 0;
-
+    const file = localStorage.getItem("testFile") || "questions.json";
+    const res = await fetch(file);
+    questions = await res.json();
+    shuffleArray(questions); // shuffle
     showQuestion();
   } catch (err) {
-    alert("❌ Error loading questions.");
-    console.error(err);
+    alert("⚠️ Failed to load questions.");
   }
 }
 
-// ========== Shuffle ==========
-function shuffleArray(arr) {
-  return arr.sort(() => Math.random() - 0.5);
-}
-
-// ========== Show a Question ==========
+// ==========================
+// Display One Question
+// ==========================
 function showQuestion() {
   if (current >= questions.length) {
     showResult();
@@ -76,11 +96,12 @@ function showQuestion() {
   }
 
   const q = questions[current];
+
   document.getElementById("qnumber").innerText = `Q${current + 1}`;
   document.getElementById("question-text").innerText = q.question;
 
-  const optDiv = document.getElementById("options");
-  optDiv.innerHTML = "";
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
 
   q.options.forEach(opt => {
     const label = document.createElement("label");
@@ -89,27 +110,51 @@ function showQuestion() {
       <input type="radio" name="option" value="${opt}" onclick="selectOption(this, '${q.answer}')">
       ${opt}
     `;
-    optDiv.appendChild(label);
+    optionsDiv.appendChild(label);
   });
 
   document.getElementById("next-btn").disabled = true;
   startTimer();
 }
 
-// ========== Timer ==========
+// ==========================
+// Select Option
+// ==========================
+function selectOption(radio, correct) {
+  stopTimer();
+  const selected = radio.value;
+  const options = document.getElementsByName("option");
+  options.forEach(opt => opt.disabled = true);
+
+  if (selected === correct) {
+    radio.parentElement.classList.add("correct");
+    score++;
+    if (typeof confetti === "function") confetti();
+  } else {
+    radio.parentElement.classList.add("wrong");
+  }
+
+  document.getElementById("next-btn").disabled = false;
+}
+
+// ==========================
+// Timer
+// ==========================
 function startTimer() {
   let time = 40;
-  document.getElementById("time").innerText = time;
-  document.getElementById("progress").style.width = "100%";
+  const timeText = document.getElementById("time");
+  const progress = document.getElementById("progress");
+
+  timeText.innerText = time;
+  progress.style.width = "100%";
 
   timer = setInterval(() => {
     time--;
-    document.getElementById("time").innerText = time;
-    document.getElementById("progress").style.width = `${(time / 40) * 100}%`;
+    timeText.innerText = time;
+    progress.style.width = `${(time / 40) * 100}%`;
 
     if (time === 0) {
       clearInterval(timer);
-      document.getElementById("next-btn").disabled = false;
       autoSelect();
     }
   }, 1000);
@@ -119,70 +164,50 @@ function stopTimer() {
   clearInterval(timer);
 }
 
-// ========== Select Option ==========
-function selectOption(radio, correct) {
-  stopTimer();
-  const selected = radio.value;
-  const all = document.getElementsByName("option");
-  all.forEach(r => r.disabled = true);
+// ==========================
+// Auto Select (on timeout)
+// ==========================
+function autoSelect() {
+  const correct = questions[current].answer;
+  const radios = document.getElementsByName("option");
 
-  if (selected === correct) {
-    radio.parentElement.classList.add("correct");
-    showConfetti();
-    score++;
-  } else {
-    radio.parentElement.classList.add("wrong");
-    showSadFace();
-  }
+  radios.forEach(r => {
+    r.disabled = true;
+    if (r.value === correct) {
+      r.parentElement.classList.add("correct");
+    }
+  });
 
   document.getElementById("next-btn").disabled = false;
 }
 
-// ========== Auto Select when Time Over ==========
-function autoSelect() {
-  const correct = questions[current].answer;
-  const radios = document.getElementsByName("option");
-  radios.forEach(r => r.disabled = true);
-
-  radios.forEach(r => {
-    if (r.value === correct) r.parentElement.classList.add("correct");
-  });
-
-  showSadFace();
-}
-
-// ========== Go to Next ==========
+// ==========================
+// Next Question
+// ==========================
 function nextQuestion() {
   stopTimer();
   current++;
   showQuestion();
 }
 
-// ========== Show Result ==========
+// ==========================
+// Show Final Result
+// ==========================
 function showResult() {
   document.getElementById("question-box").classList.add("hidden");
   document.getElementById("result-box").classList.remove("hidden");
-  document.getElementById("score-result").innerText = `You scored ${score} out of ${questions.length}`;
+  document.getElementById("score-result").innerText =
+    `🎯 You scored ${score} out of ${questions.length}`;
 }
 
-// ========== Effects ==========
-function showConfetti() {
-  confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+// ==========================
+// Shuffle Utility
+// ==========================
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
-function showSadFace() {
-  const sad = document.createElement("div");
-  sad.innerText = "😢";
-  sad.style = `
-    font-size: 80px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    animation: fadeOut 2s ease-out;
-  `;
-  document.body.appendChild(sad);
-  setTimeout(() => sad.remove(), 2000);
-}
 
