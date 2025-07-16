@@ -6,16 +6,18 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="test-container fade-in">
+  <div class="container">
     <div class="card" id="test-card">
-      <h1>Class 5 - Test</h1>
+      <h1>🧪 Class 5 - Test</h1>
 
       <p class="student-info">
-        👋 Welcome: <strong><span id="student-name"></span></strong> (Class <span id="student-class"></span>)
+        👋 Welcome: <strong><span id="student-name"></span></strong>
+        (Class <span id="student-class"></span>)
       </p>
 
       <div class="test-header">
-        <div id="timer">⏰ Time Left: <span id="time">40</span> sec</div>
+        <div id="qnumber"></div>
+        <div id="timer">⏰ Time left: <span id="time">40</span> sec</div>
       </div>
 
       <div class="timer-bar">
@@ -28,24 +30,22 @@
         <button id="next-btn" class="start-btn" onclick="nextQuestion()">Next</button>
       </div>
 
-      <div id="result-box" class="hidden result-container">
+      <div id="result-box" class="hidden">
         <h2>🎉 Test Completed!</h2>
         <p id="score-result"></p>
       </div>
     </div>
   </div>
 
-  <canvas id="confetti-canvas"></canvas>
-
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
- <script>
-  window.onload = () => {
-    document.getElementById("student-name").innerText = localStorage.getItem("fullname") || "Student";
-    document.getElementById("student-class").innerText = localStorage.getItem("class") || "5";
-    loadQuestions();
-  };
-</script>
 
+  <script>
+    window.onload = () => {
+      document.getElementById("student-name").innerText = localStorage.getItem("fullname") || "Student";
+      document.getElementById("student-class").innerText = localStorage.getItem("class") || "5";
+      loadQuestions();
+    };
+  </script>
 </body>
 </html>
