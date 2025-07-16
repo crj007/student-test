@@ -41,32 +41,39 @@ function loadDashboard() {
   document.getElementById("student-class").innerText = cls;
 }
 
-// ======= TEST VARIABLES =======
 let questions = [];
 let current = 0;
 let score = 0;
 let timer = null;
 
-// ======= LOAD QUESTIONS =======
+// ========== Load & Shuffle Questions ==========
 async function loadQuestions() {
-  const file = localStorage.getItem("testFile") || "questions.json";
-  const res = await fetch(file);
-  const data = await res.json();
-  questions = shuffleArray(data); // Shuffle on load
-  showQuestion();
+  try {
+    const res = await fetch("questions.json");
+    const data = await res.json();
+
+    questions = shuffleArray(data); // Shuffle questions
+    current = 0;
+    score = 0;
+
+    showQuestion();
+  } catch (err) {
+    alert("❌ Error loading questions.");
+    console.error(err);
+  }
 }
 
-// ======= SHUFFLE FUNCTION =======
+// ========== Shuffle ==========
 function shuffleArray(arr) {
-  return arr
-    .map(q => ({ q, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ q }) => q);
+  return arr.sort(() => Math.random() - 0.5);
 }
 
-// ======= SHOW QUESTION =======
+// ========== Show a Question ==========
 function showQuestion() {
-  if (current >= questions.length) return showResult();
+  if (current >= questions.length) {
+    showResult();
+    return;
+  }
 
   const q = questions[current];
   document.getElementById("qnumber").innerText = `Q${current + 1}`;
@@ -89,7 +96,30 @@ function showQuestion() {
   startTimer();
 }
 
-// ======= SELECT OPTION =======
+// ========== Timer ==========
+function startTimer() {
+  let time = 40;
+  document.getElementById("time").innerText = time;
+  document.getElementById("progress").style.width = "100%";
+
+  timer = setInterval(() => {
+    time--;
+    document.getElementById("time").innerText = time;
+    document.getElementById("progress").style.width = `${(time / 40) * 100}%`;
+
+    if (time === 0) {
+      clearInterval(timer);
+      document.getElementById("next-btn").disabled = false;
+      autoSelect();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timer);
+}
+
+// ========== Select Option ==========
 function selectOption(radio, correct) {
   stopTimer();
   const selected = radio.value;
@@ -108,29 +138,7 @@ function selectOption(radio, correct) {
   document.getElementById("next-btn").disabled = false;
 }
 
-// ======= TIMER FUNCTIONS =======
-function startTimer() {
-  let time = 40;
-  document.getElementById("time").innerText = time;
-  document.getElementById("progress").style.width = "100%";
-
-  timer = setInterval(() => {
-    time--;
-    document.getElementById("time").innerText = time;
-    document.getElementById("progress").style.width = `${(time / 40) * 100}%`;
-
-    if (time === 0) {
-      clearInterval(timer);
-      autoSelect();
-    }
-  }, 1000);
-}
-
-function stopTimer() {
-  clearInterval(timer);
-}
-
-// ======= AUTO SELECT ON TIME END =======
+// ========== Auto Select when Time Over ==========
 function autoSelect() {
   const correct = questions[current].answer;
   const radios = document.getElementsByName("option");
@@ -141,34 +149,27 @@ function autoSelect() {
   });
 
   showSadFace();
-  document.getElementById("next-btn").disabled = false;
 }
 
-// ======= NEXT QUESTION =======
+// ========== Go to Next ==========
 function nextQuestion() {
   stopTimer();
   current++;
   showQuestion();
 }
 
-// ======= SHOW RESULT =======
+// ========== Show Result ==========
 function showResult() {
   document.getElementById("question-box").classList.add("hidden");
   document.getElementById("result-box").classList.remove("hidden");
-  document.getElementById("score-result").innerText =
-    `🎉 You scored ${score} out of ${questions.length}`;
+  document.getElementById("score-result").innerText = `You scored ${score} out of ${questions.length}`;
 }
 
-// ======= CONFETTI =======
+// ========== Effects ==========
 function showConfetti() {
-  confetti({
-    particleCount: 80,
-    spread: 60,
-    origin: { y: 0.6 }
-  });
+  confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
 }
 
-// ======= SAD FACE =======
 function showSadFace() {
   const sad = document.createElement("div");
   sad.innerText = "😢";
@@ -184,3 +185,4 @@ function showSadFace() {
   document.body.appendChild(sad);
   setTimeout(() => sad.remove(), 2000);
 }
+
