@@ -3,68 +3,80 @@ let current = 0;
 let score = 0;
 let timer = null;
 
-// === Load Questions ===
+// ========== Load Questions ==========
 async function loadQuestions() {
-  const res = await fetch("questions.json");
-  questions = await res.json();
-
-  // Shuffle questions
-  questions = questions.sort(() => Math.random() - 0.5);
-
-  showQuestion();
+  const file = localStorage.getItem("testFile") || "questions.json";
+  try {
+    const res = await fetch(file);
+    let data = await res.json();
+    questions = shuffleArray(data);
+    showQuestion();
+  } catch (e) {
+    alert("Failed to load questions.");
+  }
 }
 
-// === Show a Question ===
+// ========== Shuffle Questions ==========
+function shuffleArray(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
+
+// ========== Show Question ==========
 function showQuestion() {
-  if (current >= questions.length) {
-    return showResult();
-  }
+  if (current >= questions.length) return showResult();
 
   const q = questions[current];
   document.getElementById("qnumber").innerText = `Q${current + 1}`;
   document.getElementById("question-text").innerText = q.question;
 
-  const optionsDiv = document.getElementById("options");
-  optionsDiv.innerHTML = "";
+  const optDiv = document.getElementById("options");
+  optDiv.innerHTML = "";
 
-  q.options.forEach(option => {
+  q.options.forEach(opt => {
     const label = document.createElement("label");
     label.className = "option-label";
     label.innerHTML = `
-      <input type="radio" name="option" value="${option}" onchange="handleOptionSelect(this, '${q.answer}')">
-      ${option}
+      <input type="radio" name="option" value="${opt}" onclick="selectOption(this, '${q.answer}')">
+      ${opt}
     `;
-    optionsDiv.appendChild(label);
+    optDiv.appendChild(label);
   });
 
-  document.getElementById("next-btn").disabled = false;
+  document.getElementById("next-btn").classList.add("hidden");
+  document.getElementById("skip-btn").classList.remove("hidden");
+  document.getElementById("submit-btn").classList.add("hidden");
+
+  if (current === questions.length - 1) {
+    document.getElementById("submit-btn").classList.remove("hidden");
+    document.getElementById("skip-btn").classList.add("hidden");
+  }
+
   startTimer();
 }
 
-// === When Option Selected ===
-function handleOptionSelect(input, correctAnswer) {
+// ========== Select Option ==========
+function selectOption(radio, correct) {
   stopTimer();
-  const selectedValue = input.value;
+
+  const selected = radio.value;
   const all = document.getElementsByName("option");
   all.forEach(r => r.disabled = true);
 
-  if (selectedValue === correctAnswer) {
-    input.parentElement.classList.add("correct");
-    score++;
+  if (selected === correct) {
+    radio.parentElement.classList.add("correct");
     showConfetti();
+    score++;
   } else {
-    input.parentElement.classList.add("wrong");
-    // Highlight correct one too
-    all.forEach(r => {
-      if (r.value === correctAnswer) {
-        r.parentElement.classList.add("correct");
-      }
-    });
+    radio.parentElement.classList.add("wrong");
     showSadFace();
   }
+
+  document.getElementById("next-btn").classList.remove("hidden");
+  document.getElementById("skip-btn").classList.add("hidden");
+  document.getElementById("submit-btn").classList.add("hidden");
 }
 
-// === Timer Handling ===
+// ========== Timer ==========
 function startTimer() {
   let time = 40;
   document.getElementById("time").innerText = time;
@@ -74,10 +86,9 @@ function startTimer() {
     time--;
     document.getElementById("time").innerText = time;
     document.getElementById("progress").style.width = `${(time / 40) * 100}%`;
-
-    if (time <= 0) {
+    if (time === 0) {
       clearInterval(timer);
-      handleTimeOut();
+      autoSelect();
     }
   }, 1000);
 }
@@ -86,79 +97,114 @@ function stopTimer() {
   clearInterval(timer);
 }
 
-// === Auto Select on Timeout ===
-function handleTimeOut() {
-  const q = questions[current];
-  const all = document.getElementsByName("option");
-  all.forEach(r => r.disabled = true);
-  all.forEach(r => {
-    if (r.value === q.answer) {
-      r.parentElement.classList.add("correct");
-    }
+// ========== Auto Select ==========
+function autoSelect() {
+  const correct = questions[current].answer;
+  const radios = document.getElementsByName("option");
+  radios.forEach(r => r.disabled = true);
+
+  radios.forEach(r => {
+    if (r.value === correct) r.parentElement.classList.add("correct");
   });
+
   showSadFace();
+  document.getElementById("next-btn").classList.remove("hidden");
+  document.getElementById("skip-btn").classList.add("hidden");
 }
 
-// === Next Question ===
+// ========== Next Question ==========
 function nextQuestion() {
   stopTimer();
   current++;
   showQuestion();
 }
 
-// === Show Result ===
+// ========== Skip Question ==========
+function skipQuestion() {
+  stopTimer();
+  current++;
+  showQuestion();
+}
+
+// ========== Submit Test ==========
+function submitTest() {
+  stopTimer();
+  showResult();
+}
+
+// ========== Show Result ==========
 function showResult() {
   document.getElementById("question-box").classList.add("hidden");
+  document.querySelector(".test-header").classList.add("hidden");
+  document.querySelector(".timer-bar").classList.add("hidden");
   document.getElementById("result-box").classList.remove("hidden");
-  document.getElementById("score-result").innerText = `🎯 You scored ${score} out of ${questions.length}`;
+  document.getElementById("score-result").innerText = `🎉 You scored ${score} out of ${questions.length}`;
 }
 
-// === Visuals ===
+// ========== Confetti ==========
 function showConfetti() {
-  confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+  if (typeof confetti === "function") {
+    confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+  }
 }
 
+// ========== Sad Face ==========
 function showSadFace() {
   const sad = document.createElement("div");
   sad.innerText = "😢";
   sad.style = `
-    font-size: 60px;
+    font-size: 80px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 9999;
     animation: fadeOut 2s ease-out;
-    z-index: 1000;
   `;
   document.body.appendChild(sad);
   setTimeout(() => sad.remove(), 2000);
 }
 
-// === Dashboard Page Loader ===
-function loadDashboard() {
-  document.getElementById("student-name").innerText = localStorage.getItem("fullname") || "Student";
-  document.getElementById("student-class").innerText = localStorage.getItem("class") || "5";
-}
-
-function beginTest() {
-  window.location.href = "test.html";
-}
-
-// === Login ===
+// ========== Login Function ==========
 async function login() {
-  const id = document.getElementById("userid").value.trim().toLowerCase();
-  const pw = document.getElementById("password").value;
+  const uid = document.getElementById("userid").value.trim();
+  const pw = document.getElementById("password").value.trim();
+  const error = document.getElementById("error-msg");
 
-  const res = await fetch("students.json");
-  const students = await res.json();
+  try {
+    const res = await fetch("students.json");
+    const students = await res.json();
+    const user = students.find(s => s.username === uid && s.password === pw);
 
-  const student = students.find(s => s.username === id && s.password === pw);
-
-  if (student) {
-    localStorage.setItem("fullname", student.fullname);
-    localStorage.setItem("class", student.class);
-    window.location.href = "dashboard.html";
-  } else {
-    document.getElementById("error-msg").innerText = "❌ Invalid name or password.";
+    if (user) {
+      localStorage.setItem("username", user.username);
+      localStorage.setItem("fullname", user.fullname);
+      localStorage.setItem("class", user.class);
+      window.location.href = "dashboard.html";
+    } else {
+      error.innerText = "❌ Incorrect username or password";
+    }
+  } catch (err) {
+    error.innerText = "⚠️ Error loading student data.";
   }
+}
+
+// ========== Load Dashboard ==========
+function loadDashboard() {
+  const fullname = localStorage.getItem("fullname");
+  const cls = localStorage.getItem("class");
+
+  if (!fullname || !cls) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  document.getElementById("student-name").innerText = fullname;
+  document.getElementById("student-class").innerText = cls;
+}
+
+// ========== Begin Test ==========
+function beginTest() {
+  localStorage.setItem("testFile", "questions.json");
+  window.location.href = "test.html";
 }
