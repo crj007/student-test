@@ -1,10 +1,4 @@
-// ========== Variables ==========
-let questions = [];
-let current = 0;
-let score = 0;
-let timer = null;
-
-// ========== Login ==========
+// ======= LOGIN FUNCTION =======
 async function login() {
   const uid = document.getElementById("userid").value.trim();
   const pw = document.getElementById("password").value.trim();
@@ -23,45 +17,54 @@ async function login() {
     } else {
       error.innerText = "❌ Incorrect username or password.";
     }
-  } catch (e) {
+  } catch (err) {
     error.innerText = "⚠️ Unable to load student data.";
   }
 }
 
-// ========== Dashboard Loader ==========
-function loadDashboard() {
-  const fullname = localStorage.getItem("fullname");
-  const cls = localStorage.getItem("class");
-  if (!fullname || !cls) window.location.href = "index.html";
-  document.getElementById("student-name").innerText = fullname;
-  document.getElementById("student-class").innerText = cls;
-}
-
-// ========== Start Test ==========
+// ======= BEGIN TEST BUTTON =======
 function beginTest() {
   localStorage.setItem("testFile", "questions.json");
   window.location.href = "test.html";
 }
 
-// ========== Load Questions ==========
+// ======= DASHBOARD NAME LOAD =======
+function loadDashboard() {
+  const name = localStorage.getItem("fullname");
+  const cls = localStorage.getItem("class");
+
+  if (!name || !cls) {
+    window.location.href = "index.html";
+  }
+
+  document.getElementById("student-name").innerText = name;
+  document.getElementById("student-class").innerText = cls;
+}
+
+// ======= TEST VARIABLES =======
+let questions = [];
+let current = 0;
+let score = 0;
+let timer = null;
+
+// ======= LOAD QUESTIONS =======
 async function loadQuestions() {
   const file = localStorage.getItem("testFile") || "questions.json";
   const res = await fetch(file);
   const data = await res.json();
-  questions = shuffle(data);
+  questions = shuffleArray(data); // Shuffle on load
   showQuestion();
 }
 
-// ========== Shuffle Questions ==========
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
+// ======= SHUFFLE FUNCTION =======
+function shuffleArray(arr) {
+  return arr
+    .map(q => ({ q, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ q }) => q);
 }
 
-// ========== Show Question ==========
+// ======= SHOW QUESTION =======
 function showQuestion() {
   if (current >= questions.length) return showResult();
 
@@ -76,7 +79,8 @@ function showQuestion() {
     const label = document.createElement("label");
     label.className = "option-label";
     label.innerHTML = `
-      <input type="radio" name="option" value="${opt}" onclick="selectOption(this, '${q.answer}')"> ${opt}
+      <input type="radio" name="option" value="${opt}" onclick="selectOption(this, '${q.answer}')">
+      ${opt}
     `;
     optDiv.appendChild(label);
   });
@@ -85,7 +89,7 @@ function showQuestion() {
   startTimer();
 }
 
-// ========== Select Option ==========
+// ======= SELECT OPTION =======
 function selectOption(radio, correct) {
   stopTimer();
   const selected = radio.value;
@@ -104,7 +108,7 @@ function selectOption(radio, correct) {
   document.getElementById("next-btn").disabled = false;
 }
 
-// ========== Timer ==========
+// ======= TIMER FUNCTIONS =======
 function startTimer() {
   let time = 40;
   document.getElementById("time").innerText = time;
@@ -115,48 +119,56 @@ function startTimer() {
     document.getElementById("time").innerText = time;
     document.getElementById("progress").style.width = `${(time / 40) * 100}%`;
 
-    if (time <= 0) {
+    if (time === 0) {
       clearInterval(timer);
       autoSelect();
     }
   }, 1000);
 }
+
 function stopTimer() {
   clearInterval(timer);
 }
 
-// ========== Auto Select ==========
+// ======= AUTO SELECT ON TIME END =======
 function autoSelect() {
   const correct = questions[current].answer;
   const radios = document.getElementsByName("option");
   radios.forEach(r => r.disabled = true);
+
   radios.forEach(r => {
     if (r.value === correct) r.parentElement.classList.add("correct");
   });
+
   showSadFace();
   document.getElementById("next-btn").disabled = false;
 }
 
-// ========== Next Question ==========
+// ======= NEXT QUESTION =======
 function nextQuestion() {
   stopTimer();
   current++;
   showQuestion();
 }
 
-// ========== Show Result ==========
+// ======= SHOW RESULT =======
 function showResult() {
   document.getElementById("question-box").classList.add("hidden");
   document.getElementById("result-box").classList.remove("hidden");
-  document.getElementById("score-result").innerText = `You scored ${score} out of ${questions.length}`;
+  document.getElementById("score-result").innerText =
+    `🎉 You scored ${score} out of ${questions.length}`;
 }
 
-// ========== Confetti + Sad Face ==========
+// ======= CONFETTI =======
 function showConfetti() {
-  if (typeof confetti === "function") {
-    confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
-  }
+  confetti({
+    particleCount: 80,
+    spread: 60,
+    origin: { y: 0.6 }
+  });
 }
+
+// ======= SAD FACE =======
 function showSadFace() {
   const sad = document.createElement("div");
   sad.innerText = "😢";
