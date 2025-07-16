@@ -10,35 +10,32 @@ body, html {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
   color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
 }
 
-/* ==== Shared Centering Styles ==== */
-.login-container, .instruction-container, .dashboard-container, .container {
-  width: 100%;
-  max-width: 1000px;
-  margin: auto;
+/* ==== Containers ==== */
+.login-container,
+.instruction-container,
+.dashboard-container,
+.container {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
-/* ==== Login Box ==== */
-.login-box {
+/* ==== Card ==== */
+.card {
   background: #fff;
-  padding: 30px 40px;
+  padding: 30px 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   text-align: center;
 }
 
-.login-box h1,
+/* ==== Login ==== */
 .login-box h2 {
   margin-bottom: 20px;
   font-size: 26px;
@@ -75,71 +72,59 @@ body, html {
   margin-top: 10px;
 }
 
-/* ==== Instructions Page ==== */
-.instruction-box {
+/* ==== Instructions ==== */
+.instructions-box {
   background: #f9f9f9;
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: left;
-}
-
-.instruction-box h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.instruction-box ul {
-  padding-left: 20px;
   font-size: 18px;
+}
+
+.instructions-box ul {
+  padding-left: 20px;
 }
 
 .student-info {
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.friendly-msg {
+.instructions-msg {
   font-style: italic;
-  color: #555;
   margin-bottom: 15px;
 }
 
+/* ==== Buttons ==== */
 .start-btn {
-  padding: 14px 20px;
+  padding: 14px 22px;
   font-size: 18px;
   background: #28a745;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .start-btn:hover {
   background: #218838;
 }
 
+.button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 /* ==== Test Page ==== */
-.card {
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 700px;
-  width: 100%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.card h1 {
-  font-size: 28px;
-  margin-bottom: 15px;
-}
-
 .test-header {
   display: flex;
   justify-content: space-between;
+  margin: 15px 0;
   font-size: 18px;
-  margin-bottom: 15px;
 }
 
 #question-text {
@@ -152,15 +137,14 @@ body, html {
   flex-direction: column;
   gap: 12px;
   margin-bottom: 20px;
-  text-align: left;
 }
 
 .option-label {
   background: #f0f0f0;
-  padding: 14px 16px;
+  padding: 14px;
   border-radius: 10px;
-  cursor: pointer;
   font-size: 18px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -178,21 +162,6 @@ body, html {
 
 .option-label input[type="radio"] {
   margin-right: 10px;
-}
-
-/* ==== Next Button ==== */
-#next-btn {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 14px 20px;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-#next-btn:hover {
-  background: #0056b3;
 }
 
 /* ==== Timer Bar ==== */
@@ -215,29 +184,21 @@ body, html {
 #timer {
   font-weight: bold;
   color: #007bff;
+  font-size: 18px;
 }
 
-/* ==== Result Box ==== */
+/* ==== Result ==== */
 .result-container, #result-box {
   text-align: center;
-  margin-top: 30px;
-}
-
-.result-container h2 {
-  font-size: 26px;
-  color: #28a745;
-}
-
-#score-result {
   font-size: 20px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .hidden {
   display: none;
 }
 
-/* ==== Confetti & Animation ==== */
+/* ==== Animation Effects ==== */
 #confetti-canvas {
   position: fixed;
   top: 0;
@@ -262,34 +223,34 @@ body, html {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* ==== Responsive for Mobile ==== */
-@media (max-width: 600px) {
-  body, html {
-    padding: 0;
-    flex-direction: column;
+/* ==== Mobile View ==== */
+@media screen and (max-width: 480px) {
+  .card {
+    padding: 20px;
   }
 
-  .login-box, .card {
-    padding: 25px 20px;
-    border-radius: 10px;
-  }
-
-  .login-box h1, .card h1 {
+  .login-box h2,
+  h1,
+  #question-text {
     font-size: 22px;
   }
 
-  input, button, .start-btn, .option-label {
+  .option-label {
+    font-size: 16px;
+  }
+
+  .start-btn {
     font-size: 16px;
     padding: 12px;
   }
 
-  .test-header {
-    flex-direction: column;
-    gap: 8px;
-    font-size: 16px;
+  .student-info {
+    font-size: 18px;
   }
 
-  #question-text {
-    font-size: 18px;
+  .test-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
