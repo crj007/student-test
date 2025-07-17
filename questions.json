@@ -1,102 +1,306 @@
 [
   {
-    "question": "Which of these is NOT a member of a joint family?",
-    "options": ["Grandparents", "Uncles and Aunts", "Cousins", "Neighbors"],
-    "answer": "Neighbors"
+    "question": "Which type of soil retains the most water?",
+    "options": ["Sandy soil", "Clayey soil", "Loamy soil", "Gravel"],
+    "answer": "Clayey soil"
   },
   {
-    "question": "What do we call the family where parents and children live together?",
-    "options": ["Joint family", "Nuclear family", "Extended family", "Friend family"],
-    "answer": "Nuclear family"
-  },
-  {
-    "question": "Which animal gives us wool?",
-    "options": ["Cow", "Sheep", "Horse", "Dog"],
-    "answer": "Sheep"
-  },
-  {
-    "question": "Which of these is a domestic animal?",
-    "options": ["Lion", "Elephant", "Cow", "Tiger"],
-    "answer": "Cow"
-  },
-  {
-    "question": "Which bird has a long neck and lives near water?",
-    "options": ["Crow", "Sparrow", "Crane", "Pigeon"],
-    "answer": "Crane"
-  },
-  {
-    "question": "Which bird stitches leaves together to make its nest?",
-    "options": ["Tailorbird", "Peacock", "Owl", "Parrot"],
-    "answer": "Tailorbird"
-  },
-  {
-    "question": "What do we call the layer of air surrounding the Earth?",
-    "options": ["Hydrosphere", "Atmosphere", "Lithosphere", "Biosphere"],
-    "answer": "Atmosphere"
-  },
-  {
-    "question": "Which of these is a natural source of water?",
-    "options": ["Tap", "Well", "River", "Water tank"],
-    "answer": "River"
-  },
-  {
-    "question": "Which layer of soil contains humus?",
-    "options": ["Topsoil", "Subsoil", "Bedrock", "Sand"],
+    "question": "What is the top layer of soil called?",
+    "options": ["Subsoil", "Bedrock", "Topsoil", "Humus"],
     "answer": "Topsoil"
   },
   {
-    "question": "What is the process of soil formation called?",
-    "options": ["Erosion", "Weathering", "Evaporation", "Condensation"],
-    "answer": "Weathering"
+    "question": "Which of these is NOT a part of a plant?",
+    "options": ["Root", "Stem", "Leaf", "Wing"],
+    "answer": "Wing"
   },
   {
-    "question": "Who takes care of us when we are sick in a family?",
-    "options": ["Father", "Mother", "Both parents", "All family members"],
-    "answer": "All family members"
+    "question": "What do plants release during photosynthesis?",
+    "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Water vapor"],
+    "answer": "Oxygen"
   },
   {
-    "question": "Which animal is called the 'ship of the desert'?",
-    "options": ["Horse", "Camel", "Elephant", "Donkey"],
+    "question": "Which animal breathes through gills?",
+    "options": ["Frog", "Fish", "Whale", "Dolphin"],
+    "answer": "Fish"
+  },
+  {
+    "question": "What instrument measures rainfall?",
+    "options": ["Thermometer", "Barometer", "Rain gauge", "Anemometer"],
+    "answer": "Rain gauge"
+  },
+  {
+    "question": "Which weather condition is measured by an anemometer?",
+    "options": ["Temperature", "Wind speed", "Rainfall", "Humidity"],
+    "answer": "Wind speed"
+  },
+  {
+    "question": "What is the process of water turning into vapor called?",
+    "options": ["Condensation", "Evaporation", "Precipitation", "Transpiration"],
+    "answer": "Evaporation"
+  },
+  {
+    "question": "Which of these is a carnivorous plant?",
+    "options": ["Rose", "Sunflower", "Venus flytrap", "Tulip"],
+    "answer": "Venus flytrap"
+  },
+  {
+    "question": "What do we call animals that eat both plants and other animals?",
+    "options": ["Herbivores", "Carnivores", "Omnivores", "Decomposers"],
+    "answer": "Omnivores"
+  },
+  {
+    "question": "Which soil is best for making pots and bricks?",
+    "options": ["Sandy soil", "Clayey soil", "Loamy soil", "Chalky soil"],
+    "answer": "Clayey soil"
+  },
+  {
+    "question": "What part of the plant carries water and nutrients from roots to leaves?",
+    "options": ["Flower", "Stem", "Fruit", "Bark"],
+    "answer": "Stem"
+  },
+  {
+    "question": "Which animal undergoes complete metamorphosis?",
+    "options": ["Butterfly", "Grasshopper", "Spider", "Cockroach"],
+    "answer": "Butterfly"
+  },
+  {
+    "question": "What do we call the day-to-day conditions of the atmosphere?",
+    "options": ["Climate", "Weather", "Season", "Temperature"],
+    "answer": "Weather"
+  },
+  {
+    "question": "Which of these is a winter month in India?",
+    "options": ["April", "July", "October", "January"],
+    "answer": "January"
+  },
+  {
+    "question": "What helps in preventing soil erosion?",
+    "options": ["Cutting trees", "Planting grass", "Digging more", "Removing plants"],
+    "answer": "Planting grass"
+  },
+  {
+    "question": "Which part of the plant makes food?",
+    "options": ["Root", "Stem", "Leaf", "Flower"],
+    "answer": "Leaf"
+  },
+  {
+    "question": "Which animal has a hump to store fat?",
+    "options": ["Elephant", "Camel", "Giraffe", "Hippopotamus"],
     "answer": "Camel"
   },
   {
-    "question": "Which bird migrates long distances every year?",
-    "options": ["Siberian Crane", "Peacock", "Crow", "Sparrow"],
-    "answer": "Siberian Crane"
+    "question": "What do we call the movement of air?",
+    "options": ["Rain", "Wind", "Storm", "Cloud"],
+    "answer": "Wind"
   },
   {
-    "question": "What do we call the home made by a bird?",
-    "options": ["Cave", "Nest", "Den", "Burrow"],
-    "answer": "Nest"
+    "question": "Which gas do plants absorb from the air?",
+    "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+    "answer": "Carbon dioxide"
+  },
+
+  {
+    "question": "Why do some birds migrate to warmer places during winter?",
+    "options": [
+      "To build nests",
+      "To find food and escape cold",
+      "To change feather colors",
+      "To meet other bird species"
+    ],
+    "answer": "To find food and escape cold"
   },
   {
-    "question": "Which of these helps in reducing air pollution?",
-    "options": ["Cutting trees", "Burning garbage", "Planting trees", "Using more vehicles"],
-    "answer": "Planting trees"
+    "question": "Which of these is an adaptation of desert animals?",
+    "options": [
+      "Thick fur",
+      "Storing water in their bodies",
+      "Webbed feet",
+      "Bright colors"
+    ],
+    "answer": "Storing water in their bodies"
   },
   {
-    "question": "Which soil is best for growing plants?",
-    "options": ["Sandy soil", "Clayey soil", "Loamy soil", "Gravel"],
-    "answer": "Loamy soil"
+    "question": "Why do Arctic foxes have white fur in winter?",
+    "options": [
+      "To absorb more sunlight",
+      "To camouflage with snow",
+      "To attract mates",
+      "To show dominance"
+    ],
+    "answer": "To camouflage with snow"
   },
   {
-    "question": "What do family members share with each other?",
-    "options": ["Food", "Love and care", "House", "All of these"],
-    "answer": "All of these"
+    "question": "Which bird travels the longest distance during migration?",
+    "options": [
+      "Siberian Crane",
+      "Arctic Tern",
+      "Bar-headed Goose",
+      "Barn Swallow"
+    ],
+    "answer": "Arctic Tern"
   },
   {
-    "question": "Which animal is known as man's best friend?",
-    "options": ["Cat", "Dog", "Parrot", "Rabbit"],
-    "answer": "Dog"
+    "question": "What helps fish swim easily in water?",
+    "options": [
+      "Wings",
+      "Streamlined body",
+      "Thick fur",
+      "Strong legs"
+    ],
+    "answer": "Streamlined body"
   },
   {
-    "question": "Which bird can imitate human speech?",
-    "options": ["Crow", "Peacock", "Parrot", "Pigeon"],
-    "answer": "Parrot"
+    "question": "Why do some animals hibernate during winter?",
+    "options": [
+      "To conserve energy when food is scarce",
+      "To grow bigger",
+      "To change their skin",
+      "To find new homes"
+    ],
+    "answer": "To conserve energy when food is scarce"
   },
   {
-    "question": "What should we do to protect our environment?",
-    "options": ["Litter everywhere", "Waste water", "Recycle and reuse", "Cut more trees"],
-    "answer": "Recycle and reuse"
+    "question": "Which adaptation helps camels survive in deserts?",
+    "options": [
+      "Hump for fat storage",
+      "Webbed feet",
+      "Thick fur coat",
+      "Short legs"
+    ],
+    "answer": "Hump for fat storage"
+  },
+  {
+    "question": "Why do monarch butterflies migrate?",
+    "options": [
+      "To escape cold weather",
+      "To find colorful flowers",
+      "To change their wing patterns",
+      "To avoid predators"
+    ],
+    "answer": "To escape cold weather"
+  },
+  {
+    "question": "What special adaptation do woodpeckers have?",
+    "options": [
+      "Strong beak for drilling wood",
+      "Webbed feet for swimming",
+      "Long neck for reaching leaves",
+      "Big eyes for night vision"
+    ],
+    "answer": "Strong beak for drilling wood"
+  },
+  {
+    "question": "Which animal migrates in large groups called herds?",
+    "options": [
+      "Penguins",
+      "Wildebeest",
+      "Polar bears",
+      "Kangaroos"
+    ],
+    "answer": "Wildebeest"
+  },
+  {
+    "question": "Why do some trees shed leaves in winter?",
+    "options": [
+      "To conserve water",
+      "To attract animals",
+      "To change color",
+      "To grow faster"
+    ],
+    "answer": "To conserve water"
+  },
+  {
+    "question": "What helps polar bears survive in cold climates?",
+    "options": [
+      "Thin skin",
+      "Layer of fat and thick fur",
+      "Long tail",
+      "Bright white color only"
+    ],
+    "answer": "Layer of fat and thick fur"
+  },
+  {
+    "question": "Which bird migrates across the Himalayas?",
+    "options": [
+      "Peacock",
+      "Bar-headed Goose",
+      "Ostrich",
+      "Penguin"
+    ],
+    "answer": "Bar-headed Goose"
+  },
+  {
+    "question": "Why do some plants have thorns?",
+    "options": [
+      "To store water",
+      "To attract insects",
+      "For protection from animals",
+      "To help in photosynthesis"
+    ],
+    "answer": "For protection from animals"
+  },
+  {
+    "question": "What adaptation helps monkeys live on trees?",
+    "options": [
+      "Long tail for balance",
+      "Sharp claws for digging",
+      "Thick fur for warmth",
+      "Webbed feet"
+    ],
+    "answer": "Long tail for balance"
+  },
+  {
+    "question": "Which animal migrates the longest distance among mammals?",
+    "options": [
+      "Elephant",
+      "Gray Whale",
+      "Zebra",
+      "Polar Bear"
+    ],
+    "answer": "Gray Whale"
+  },
+  {
+    "question": "Why do some desert plants have small or no leaves?",
+    "options": [
+      "To reduce water loss",
+      "To attract more sunlight",
+      "To look different",
+      "To store more food"
+    ],
+    "answer": "To reduce water loss"
+  },
+  {
+    "question": "What helps ducks swim in water?",
+    "options": [
+      "Sharp claws",
+      "Webbed feet",
+      "Long neck",
+      "Strong wings"
+    ],
+    "answer": "Webbed feet"
+  },
+  {
+    "question": "Which of these birds does NOT migrate?",
+    "options": [
+      "Siberian Crane",
+      "House Sparrow",
+      "Arctic Tern",
+      "Barn Swallow"
+    ],
+    "answer": "House Sparrow"
+  },
+  {
+    "question": "Why do some animals have patterns on their body?",
+    "options": [
+      "For camouflage",
+      "To look beautiful",
+      "To absorb more heat",
+      "To store water"
+    ],
+    "answer": "For camouflage"
   }
 ]
+
+
+
