@@ -1,202 +1,202 @@
 [
   {
-    "question": "Which of the following is an adaptation that helps a camel survive in the desert?",
+    "question": "Which of these birds is known for its beautiful tail feathers and dance?",
     "options": [
-      "Thick fur to keep it warm",
-      "Wide, flat feet to walk on sand",
-      "Sharp claws to climb mountains",
-      "Gills to breathe in water"
+      "Sparrow",
+      "Peacock",
+      "Crow",
+      "Pigeon"
     ],
-    "answer": "Wide, flat feet to walk on sand"
+    "answer": "Peacock"
   },
   {
-    "question": "During very cold winters, some animals like bears go into a long, deep sleep. What is this called?",
+    "question": "Which bird stitches leaves together to build its nest?",
     "options": [
-      "Migration",
-      "Hibernation",
-      "Adaptation",
-      "Camouflage"
+      "Weaver Bird",
+      "Woodpecker",
+      "Tailor Bird",
+      "Eagle"
     ],
-    "answer": "Hibernation"
+    "answer": "Tailor Bird"
   },
   {
-    "question": "Why do elephants have large, flat ears?",
+    "question": "Which of these animals is NOT a mammal?",
     "options": [
-      "To hear sounds from far away",
-      "To fly short distances",
-      "To flap and cool themselves down",
-      "To store water for later use"
+      "Bat",
+      "Dolphin",
+      "Penguin",
+      "Kangaroo"
     ],
-    "answer": "To flap and cool themselves down"
+    "answer": "Penguin"
   },
   {
-    "question": "A polar bear's white fur is an example of:",
+    "question": "Which bird has a sharp, curved beak that helps it tear flesh?",
     "options": [
-      "Hibernation",
-      "Migration",
-      "Camouflage",
-      "Breathing"
+      "Sparrow",
+      "Eagle",
+      "Duck",
+      "Hummingbird"
     ],
-    "answer": "Camouflage"
+    "answer": "Eagle"
   },
   {
-    "question": "Why do birds like Siberian cranes migrate to warmer places in winter?",
+    "question": "What is a group of lions called?",
     "options": [
-      "To find more water",
-      "To escape from predators",
-      "To find food and escape the extreme cold",
-      "To lay their eggs in a new place"
+      "Herd",
+      "Pack",
+      "Pride",
+      "Flock"
     ],
-    "answer": "To find food and escape the extreme cold"
+    "answer": "Pride"
   },
   {
-    "question": "Which layer of the soil is rich in humus and is best for plant growth?",
+    "question": "Which animal has the strongest sense of smell?",
     "options": [
-      "Bedrock",
-      "Subsoil",
-      "Topsoil",
-      "C-horizon"
+      "Eagle",
+      "Shark",
+      "Bloodhound Dog",
+      "Human"
     ],
-    "answer": "Topsoil"
+    "answer": "Bloodhound Dog"
   },
   {
-    "question": "Humus is a part of soil that comes from:",
+    "question": "Owls can see very well at night. This strong sense is called:",
     "options": [
-      "Broken pieces of rock",
-      "Decayed plants and animals",
-      "Sand and silt",
-      "Water and air"
+      "Nocturnal Vision",
+      "Telescopic Vision",
+      "Thermal Vision",
+      "Microscopic Vision"
     ],
-    "answer": "Decayed plants and animals"
+    "answer": "Nocturnal Vision"
   },
   {
-    "question": "Which type of soil feels smooth and sticky when wet and is used to make pots?",
+    "question": "Butterflies taste their food with their:",
     "options": [
-      "Sandy soil",
-      "Loamy soil",
-      "Clayey soil",
-      "Gravel"
+      "Antennae",
+      "Wings",
+      "Feet",
+      "Eyes"
     ],
-    "answer": "Clayey soil"
+    "answer": "Feet"
   },
   {
-    "question": "Water drains through the soil very quickly in:",
+    "question": "Which animal uses echolocation to navigate and find food in the dark?",
     "options": [
-      "Clayey Soil",
-      "Loamy Soil",
-      "Sandy Soil",
+      "Owl",
+      "Bat",
+      "Cat",
+      "Tiger"
+    ],
+    "answer": "Bat"
+  },
+  {
+    "question": "Snakes use their __________ to 'taste' the air and smell their surroundings.",
+    "options": [
+      "Eyes",
+      "Tongue",
+      "Nose",
+      "Scales"
+    ],
+    "answer": "Tongue"
+  },
+  {
+    "question": "We get tea from which part of a plant?",
+    "options": [
+      "Root",
+      "Stem",
+      "Leaf",
+      "Flower"
+    ],
+    "answer": "Leaf"
+  },
+  {
+    "question": "Which plant's stem is used as a spice (e.g., cinnamon)?",
+    "options": [
+      "Tulsi",
+      "Cinnamon",
+      "Aloe Vera",
+      "Neem"
+    ],
+    "answer": "Cinnamon"
+  },
+  {
+    "question": "From which plant do we get cotton for clothes?",
+    "options": [
+      "Cotton Plant",
+      "Jute Plant",
+      "Coconut Tree",
+      "Rubber Tree"
+    ],
+    "answer": "Cotton Plant"
+  },
+  {
+    "question": "Turmeric, a yellow spice used in cooking, comes from the __________ of a plant.",
+    "options": [
+      "Stem",
+      "Flower",
+      "Root",
+      "Leaf"
+    ],
+    "answer": "Root"
+  },
+  {
+    "question": "Which tree gives us the wood used to make cricket bats?",
+    "options": [
+      "Teak",
+      "Willow",
+      "Oak",
+      "Neem"
+    ],
+    "answer": "Willow"
+  },
+  {
+    "question": "What do we get from the Neem tree that is used in medicines and soaps?",
+    "options": [
+      "Leaves and Bark",
+      "Flowers",
+      "Fruits",
       "All of the above"
     ],
-    "answer": "Sandy Soil"
+    "answer": "All of the above"
   },
   {
-    "question": "Which of these is NOT a cause of soil erosion?",
+    "question": "Which of these is a medicinal plant used to treat cough and cold?",
     "options": [
-      "Planting more trees",
-      "Strong winds",
-      "Heavy rains",
-      "Deforestation (cutting down trees)"
+      "Rose",
+      "Tulsi (Holy Basil)",
+      "Orchid",
+      "Cactus"
     ],
-    "answer": "Planting more trees"
+    "answer": "Tulsi (Holy Basil)"
   },
   {
-    "question": "Which animal gives us wool?",
+    "question": "Rubber is obtained from the __________ of the rubber tree.",
     "options": [
-      "Cow",
-      "Sheep",
-      "Goat",
-      "Both Sheep and Goat"
+      "Leaf",
+      "Latex (Sap)",
+      "Seed",
+      "Flower"
     ],
-    "answer": "Both Sheep and Goat"
+    "answer": "Latex (Sap)"
   },
   {
-    "question": "Honey, a natural sweetener, is given to us by:",
+    "question": "Which part of the sugarcane plant is used to make sugar?",
     "options": [
-      "Silkworms",
-      "Honeybees",
-      "Butterflies",
-      "Parrots"
+      "Leaf",
+      "Stem",
+      "Root",
+      "Flower"
     ],
-    "answer": "Honeybees"
+    "answer": "Stem"
   },
   {
-    "question": "What do we get from chickens?",
+    "question": "Plants like Marigold and Rose are grown for their:",
     "options": [
-      "Milk and Meat",
-      "Eggs and Meat",
-      "Wool and Eggs",
-      "Leather and Silk"
+      "Medicinal use",
+      "Beautiful Flowers",
+      "Strong Wood",
+      "Edible Fruits"
     ],
-    "answer": "Eggs and Meat"
-  },
-  {
-    "question": "The process of taking out silk threads from the cocoon of the silkworm is called:",
-    "options": [
-      "Weaving",
-      "Spinning",
-      "Sericulture",
-      "Reeling"
-    ],
-    "answer": "Reeling"
-  },
-  {
-    "question": "Which product do we NOT get from animals?",
-    "options": [
-      "Leather",
-      "Cotton",
-      "Cheese",
-      "Eggs"
-    ],
-    "answer": "Cotton"
-  },
-  {
-    "question": "A fish has __________ to help it breathe underwater.",
-    "options": [
-      "Lungs",
-      "Gills",
-      "Blowholes",
-      "Fins"
-    ],
-    "answer": "Gills"
-  },
-  {
-    "question": "Which animal's milk is commonly used to make cheese and yogurt?",
-    "options": [
-      "Cow and Goat",
-      "Hen and Duck",
-      "Sheep and Fish",
-      "Camel and Bee"
-    ],
-    "answer": "Cow and Goat"
-  },
-  {
-    "question": "Which of these helps in preventing soil erosion?",
-    "options": [
-      "Overgrazing by animals",
-      "Cutting down trees",
-      "Planting grass",
-      "Building on steep slopes"
-    ],
-    "answer": "Planting grass"
-  },
-  {
-    "question": "Which animal is known as the 'Ship of the Desert'?",
-    "options": [
-      "Horse",
-      "Camel",
-      "Elephant",
-      "Dog"
-    ],
-    "answer": "Camel"
-  },
-  {
-    "question": "Which of these is a use of animals besides giving food?",
-    "options": [
-      "Carrying loads",
-      "Giving us oxygen",
-      "Causing rainfall",
-      "Making soil"
-    ],
-    "answer": "Carrying loads"
+    "answer": "Beautiful Flowers"
   }
 ]
